@@ -1,38 +1,58 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { GenreApi, options } from '../../constants/Api';
+import './Movielist.css'
 
 const Movielist = () => {
 
 
   const movieData = useSelector((state) => state.latestMovie.latest);
 
-  const genreList = useSelector((state)=> state.genre.genreData)
+  console.log(movieData)
 
-  console.log(genreList)
+  const genreList = useSelector((state) => state.genre.genreData)
 
 
   return (
-    <div>
-      {movieData.length != 0 && movieData[0].results.map((data, id) => {
-      
-       const genre = data.genre_ids.map((item)=>{
-          return (
-             genreList[0].genres.filter((val)=>{
-                return val.id === item; 
-          }))
-       })
+    <div className='container'>
+      {movieData.length != 0 && movieData[0].results.map((data) => {
 
-        return <div key={id} className='Movie-card'>
-          <img src={`https://image.tmdb.org/t/p/w500/${data.backdrop_path}`} />
+        const genreIds = data.genre_ids || [];
+
+        const genre = genreIds.map((item) => {
+          return (
+            genreList[0]?.genres.filter((val) => {
+              return val.id === item;
+            }) || []
+          );
+        })
+
+        return <div key={data.id} className='Movie-card'>
+          <div className='card-img'>
+            <img  src={`https://image.tmdb.org/t/p/w500/${data.backdrop_path}`} />
+          </div>
 
           <div className='card-text'>
-            <h3>{data.original_title}</h3>
-            <p>Release Date: {data.release_date}</p>
-            <p>Overview: {data.overview}</p>
-            {genre.map((val)=>{
-               return <p>{val[0].name}</p>
-            })}
+            <div className='card-heading'>
+              <h3>{data.original_title}</h3>
+            </div>
+            <hr/>
+            <div className='card-row1'>
+              <div className='card-row1-left'>
+                <p className='card-date'>{data.release_date.substring(0, 4)}.</p>
+                <p className='card-rating'>rating: {data.vote_average.toFixed(1)}/10</p>
+              </div>
+              <div className='card-row1-right'>
+                <p className='card-media'>{data.media_type}</p>
+              </div>
+            </div>
+            <div className='card-genre'>
+              {genre && genre.length > 0 && genre[0].length > 0 && genre.map((val,index) => {
+                return val.length > 0 && <p key={val[0].id}>
+                  {val[0].name}
+                  {index < genre.length - 1 && ' /'}
+                  </p>
+              })}
+            </div>
           </div>
 
         </div>
