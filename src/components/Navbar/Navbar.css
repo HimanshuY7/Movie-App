@@ -1,0 +1,9 @@
+.nav-menu li{
+    padding: 2px;
+    margin: 10px;
+    list-style-type: none;
+}
+
+.nav-menu li a{
+    text-decoration: none;
+}

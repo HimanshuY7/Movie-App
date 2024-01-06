@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import Navbar from '../../components/Navbar/Navbar'
 import { GenreApi, LatestMovieApi, options } from '../../constants/Api'
 import { useDispatch } from 'react-redux'
-import { fetchMovieData } from '../../features/FetchLatestMovie/fetchSlice';
+import { fetchMovieData } from '../../features/FetchLatestMovieListDetails/fetchSlice';
 import Movielist from '../../components/MovieList/Movielist';
 import { fetchGenreData } from '../../features/AllGenreData/genreSlice';
 

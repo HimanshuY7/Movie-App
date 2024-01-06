@@ -5,21 +5,27 @@
 
 .Movie-card{
     background: #5a4661;
-    height: 450px;
+    height: 400px;
     width: 300px;
     margin: 10px;
     padding: 10px;
     border-radius: 10px;
 }
 
+.Movie-card:hover{
+    border:solid;
+    border-color: orange;
+    filter: brightness(30%)
+}
+
 .card-img{
    width: 280px;
-   height: 250px;
+   height: 200px;
 }
 
 .card-img img{
    width: 280px;
-   height: 250px;
+   height: 200px;
 }
 
 .card-heading{

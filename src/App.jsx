@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Home from './routes/Home/Home'
+import Movieveiw from './routes/Movie-Detailed-view/Movieveiw'
 import Favourite from './routes/favourite-page/Favourite'
 import './App.css'
 
@@ -13,6 +14,7 @@ function App() {
          <Routes>
             <Route path='/' element={<Home/>}/>
             <Route path='/favourite' element={<Favourite/>}/>
+            <Route path='/Details' element={<Movieveiw/>}/>
          </Routes>
       </Router>
     </>

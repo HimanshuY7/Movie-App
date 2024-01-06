@@ -9,6 +9,6 @@
 
   export const LatestMovieApi= 'https://api.themoviedb.org/3/trending/movie/day?language=en-US';
 
-  export const MovieDetailApi = 'https://api.themoviedb.org/3/movie/movie_id?language=en-US';
+  export const MovieDetailApi = 'https://api.themoviedb.org/3/movie/';
 
   export const GenreApi = 'https://api.themoviedb.org/3/genre/movie/list?language=en';

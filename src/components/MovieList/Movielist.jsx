@@ -1,15 +1,34 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import './Movielist.css'
+import { MovieDetailApi, options } from '../../constants/Api';
+import { getMovieDetails } from '../../features/FetchLatestMovieListDetails/fetchSlice';
+import { useNavigate } from 'react-router-dom';
 
 const Movielist = () => {
 
 
   const movieData = useSelector((state) => state.latestMovie.latest);
 
-  console.log(movieData)
-
   const genreList = useSelector((state) => state.genre.genreData)
+
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
+//Fetching movie details from api, navigating to details route
+  const handleClick = (id)=>{
+      fetch(`${MovieDetailApi}`+`${id}`+ '?language=en-US', options)
+      .then((res)=>res.json()).then((data)=>{
+
+        let dataList = [data];
+
+         dispatch(getMovieDetails(dataList))
+      })
+      .catch((err)=> console.error(err));
+
+      navigate('/Details');
+  }
 
 
   return (
@@ -26,7 +45,7 @@ const Movielist = () => {
           );
         })
 
-        return <div key={data.id} className='Movie-card'>
+        return <div key={data.id} className='Movie-card' onClick={()=>handleClick(data.id)}>
           <div className='card-img'>
             <img  src={`https://image.tmdb.org/t/p/w500/${data.backdrop_path}`} />
           </div>

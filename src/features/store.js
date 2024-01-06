@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import fetchReducer from "./FetchLatestMovie/fetchSlice"
+import fetchReducer from "./FetchLatestMovieListDetails/fetchSlice"
 import genreReducer from "./AllGenreData/genreSlice"
 
 
