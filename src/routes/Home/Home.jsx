@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import { fetchMovieData } from '../../features/FetchLatestMovieListDetails/fetchSlice';
 import Movielist from '../../components/MovieList/Movielist';
 import { fetchGenreData } from '../../features/AllGenreData/genreSlice';
+import SearchData from '../../components/Search/SearchData';
 
 const Home = () => {
 
@@ -42,6 +43,7 @@ const Home = () => {
   return (
     <div>
       <Navbar />
+      <SearchData/>
       <Movielist />
     </div>
   )

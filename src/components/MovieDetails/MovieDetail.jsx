@@ -1,13 +1,22 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import './MovieDetail.css'
+import { getMovieDetails } from '../../features/FetchLatestMovieListDetails/fetchSlice';
 
 const MovieDetail = () => {
 
+    const dispatch = useDispatch();
 
     const movieDetails = useSelector((state) => state.latestMovie.movieDetail);
 
     console.log(movieDetails);
+
+
+    useEffect(()=>{
+        return()=>{
+            dispatch(getMovieDetails([]))
+        }
+    },[]);
 
     return (
         <>
