@@ -44,6 +44,12 @@ const Navbar = () => {
                         <li>
                             <Link to='/favourite'>Favourite</Link>
                         </li>
+                        <li>
+                            <Link to='/TopMovie'>Top-Rated Movies</Link>
+                        </li>
+                        <li>
+                            <Link to='/TopSeries'>Top-Rated TV</Link>
+                        </li>
                     </ul>
                     <div className="d-flex">
                         <input className="form-control me-2" value={searchResult} type="search" placeholder="Search" onChange={handleSearch} aria-label="Search" />

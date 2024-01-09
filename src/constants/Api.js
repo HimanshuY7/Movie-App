@@ -14,3 +14,7 @@
   export const GenreApi = 'https://api.themoviedb.org/3/genre/movie/list?language=en';
 
   export const SearchApi = 'https://api.themoviedb.org/3/search/movie'
+
+  export const TopShowApi = 'https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1'
+
+  export const TopMovieApi = 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1'

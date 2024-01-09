@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     latest:[],
-    movieDetail:[]
+    movieDetail:[],
 }
 
 const fetchSlice = createSlice({
@@ -10,11 +10,11 @@ const fetchSlice = createSlice({
     initialState: initialState,
     reducers: {
         fetchMovieData : (state , {payload})=>{
-            state.latest = payload
+            state.latest = payload;
         },
         getMovieDetails: (state ,{payload})=>{
             state.movieDetail = payload;
-        }
+        },
     }
 })
 
