@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import './Movielist.css'
-import { MovieDetailApi, options } from '../../constants/Api';
 import { getMovieDetails } from '../../features/FetchLatestMovieListDetails/fetchSlice';
 import { useNavigate } from 'react-router-dom';
+import useMovieDetails from '../../utils/useMovieDetails';
 
 const Movielist = () => {
 
@@ -16,16 +16,15 @@ const Movielist = () => {
 
   const navigate = useNavigate();
 
+  const { fetchDetails} = useMovieDetails();
+
   //Fetching movie details from api, navigating to details route
-  const handleClick = (id) => {
-    fetch(`${MovieDetailApi}` + `${id}` + '?language=en-US', options)
-      .then((res) => res.json()).then((data) => {
+  const handleClick = async (id) => {
 
-        let dataList = [data];
+    const data = await fetchDetails(id);
 
-        dispatch(getMovieDetails(dataList))
-      })
-      .catch((err) => console.error(err));
+        dispatch(getMovieDetails([data]))
+  
 
     navigate(`/Details/:${id}`);
   }

@@ -11,6 +11,8 @@
 
   export const MovieDetailApi = 'https://api.themoviedb.org/3/movie/';
 
+  export const ShowDetailApi = 'https://api.themoviedb.org/3/tv/'
+
   export const GenreApi = 'https://api.themoviedb.org/3/genre/movie/list?language=en';
 
   export const SearchApi = 'https://api.themoviedb.org/3/search/movie'

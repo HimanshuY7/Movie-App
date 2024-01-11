@@ -12,12 +12,6 @@ const MovieDetail = () => {
     console.log(movieDetails);
 
 
-    useEffect(()=>{
-        return()=>{
-            dispatch(getMovieDetails([]))
-        }
-    },[]);
-
     return (
         <>
             {movieDetails.length != 0 && <div className='Detail-container'>
