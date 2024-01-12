@@ -11,7 +11,7 @@ const TopRatedShow = lazy(()=> import('./routes/Top-Rated/TopRatedShow'))
 function App() {
 
   return (
-    <>
+    <div>
       <Router>
          <Routes>
             <Route path='/' element={<Home/>}/>
@@ -26,7 +26,7 @@ function App() {
           }/>
          </Routes>
       </Router>
-    </>
+    </div>
   )
 }
 

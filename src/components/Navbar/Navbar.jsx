@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import './Navbar.css'
 import { useDispatch } from 'react-redux'
 import { setSearchData } from '../../features/FetchLatestMovieListDetails/searchSlice'
 import { SearchApi, options } from "../../constants/Api";
@@ -25,35 +24,36 @@ const Navbar = () => {
 
         const data = await response;
 
-        dispatch(setSearchData(data));
+        dispatch(setSearchData([data]));
 
     }
 
     return (
         <div>
-            <nav className="navbar navbar-light bg-light">
-                <div className="container-fluid">
-                    <ul className='nav-menu d-flex'>
-                        <li>
-                            <a className="navbar-brand">WatchMovies</a>
+            <nav>
+                <div className="flex justify-between items-center p-2 bg-[#E3D9D7] w-full">
+                    <ul className='flex py-5 space-x-4'>
+                        <li className='mt-1'>
+                            <a className="text-2xl">WatchMovies</a>
                         </li>
 
-                        <li>
+                        <li className='mt-2'>
                             <Link to='/'>Home</Link>
                         </li>
-                        <li>
+                        <li className='mt-2'>
                             <Link to='/favourite'>Favourite</Link>
                         </li>
-                        <li>
+                        <li className='mt-2'>
                             <Link to='/TopMovie'>Top-Rated Movies</Link>
                         </li>
-                        <li>
+                        <li className='mt-2'>
                             <Link to='/TopSeries'>Top-Rated TV</Link>
                         </li>
                     </ul>
-                    <div className="d-flex">
-                        <input className="form-control me-2" value={searchResult} type="search" placeholder="Search" onChange={handleSearch} aria-label="Search" />
-                        <button className="btn btn-outline-success" onClick={fetchSearchData}>Search</button>
+                    <div className="flex items-center mr-[20px]">
+                        <input className="shadow-md mx-1 px-2" value={searchResult} type="search" placeholder="Search" onChange={handleSearch} aria-label="Search" />
+                        <button className=" px-2 shadow-md bg-white hover:bg-green-400 rounded-sm
+                         hover:text-white" onClick={fetchSearchData}>Search</button>
                     </div>
                 </div>
             </nav>
