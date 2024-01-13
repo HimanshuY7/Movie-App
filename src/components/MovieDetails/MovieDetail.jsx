@@ -1,12 +1,33 @@
-import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { updateFavourite } from '../../features/FavouritePageRelatedQuery/favouriteSlice';
 
 
 const MovieDetail = () => {
 
+    const dispatch = useDispatch();
+
     const movieDetails = useSelector((state) => state.latestMovie.movieDetail);
 
-    console.log(movieDetails);
+    const favouriteList = useSelector((state)=>state.favourite.favour);
+
+    const IdList = favouriteList.map((val)=>{
+        return val[0]?.id;
+    })
+
+    const AddFavour = (id) =>{
+        if(IdList.includes(id)== false){
+          const newList = [...favouriteList,movieDetails]
+          dispatch(updateFavourite(newList));
+        }
+    }
+
+    const RemoveFavour = (id) =>{
+        const newList = favouriteList.filter((item)=>{
+            return item[0]?.id!= id;
+        })
+        dispatch(updateFavourite(newList));
+    }
 
 
     return (
@@ -16,7 +37,10 @@ const MovieDetail = () => {
                 <div className='bg-black mt-[50px] ml-[50px] w-[700px] h-[500px] absolute rounded-md flex p-2 z-0'>
                     <div className='h-[500px]'>
                         <img className='h-[350px] w-[400px p-3' src={`https://image.tmdb.org/t/p/w500/${movieDetails[0]?.poster_path}`} />
-                        <button className='bg-gray-500 p-2 ml-[20px] mt-[30px]'>Add To favourite</button>
+                        {
+                           IdList.includes(movieDetails[0]?.id)== false ? (<button className='bg-gray-500 p-2 ml-[20px] mt-[30px]' onClick={()=>AddFavour(movieDetails[0]?.id)}>Add To favourite</button>)
+                           : (<button className='bg-gray-500 p-2 ml-[20px] mt-[30px]' onClick={()=>RemoveFavour(movieDetails[0]?.id)}>Remove favourite</button>)
+                        }
                     </div>
 
                     <div className=' w-[500px] p-2 ml-[300px] mt-[20px] absolute z-2'>
