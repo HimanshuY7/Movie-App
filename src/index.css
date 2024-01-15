@@ -2,3 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+.slick-slide > div {
+    margin: 0 5px;
+    width: 270px;
+    padding-top: 1rem;
+}
+
+.slick-slide{
+    height: 440px;
+    background: black;
+    border-radius: 5px
+}

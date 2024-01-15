@@ -1,6 +1,8 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-// import './Movielist.css'
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import { getMovieDetails } from '../../features/FetchLatestMovieListDetails/fetchSlice';
 import { useNavigate } from 'react-router-dom';
 import useMovieDetails from '../../utils/useMovieDetails';
@@ -28,10 +30,19 @@ const Card = ({Apidata}) => {
         navigate(`/Details/:${id}`);
     }
 
+    const settings = {
+        dots: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 5,
+        slidesToScroll: 3
+      };
+
 
     return (
         <>
-            <div className='flex flex-wrap px-2 ml-3'>
+            <div className='px-4 mx-3'>
+            <Slider {...settings}>
                 {Apidata.length != 0 && Apidata[0].results.filter((item) => {
                     return item.backdrop_path != null
                 }).map((data) => {
@@ -46,15 +57,16 @@ const Card = ({Apidata}) => {
                         );
                     })
 
-                    return <div key={data.id} className='m-3 p-3 h-[400px] w-[310px] bg-[#5a4661] bg-opacity-50
+                    return  <div key={data.id} className='mx-4 p-3 h-[400px] w-[210px] bg-[#5a4661] bg-opacity-50
                     rounded-md shadow-md transform hover:scale-105 transition-transform duration-300 
-                    hover:border-4 hover:border-orange-500' onClick={() => handleClick(data.id)}>
+                    hover:border-4 hover:border-orange-500' 
+                    onClick={() => handleClick(data.id)}>
 
                         <div className='ml-1 w-[280px]'>
-                            <img className='w-full h-[200px] shadow-md' src={`https://image.tmdb.org/t/p/w500/${data.backdrop_path}`} />
+                            <img className='w-[240px] h-[200px] shadow-md' src={`https://image.tmdb.org/t/p/w500/${data.backdrop_path}`} />
                         </div>
 
-                        <div className='shadow-md'>
+                        <div >
                             <div className='text-white h-[70px] py-1 px-2 text-[18px] font-bold'>
                                 <h3>{data.title}</h3>
                             </div>
@@ -63,7 +75,7 @@ const Card = ({Apidata}) => {
                             <div className='flex justify-between'>
                                 <div className='flex'>
                                     <p className='p-2 text-[14px] text-white'>{data.release_date} ⁃</p>
-                                    <p className='px-2 mt-1 rounded-md font-bold bg-yellow-300 h-[30px]'>☆{data.vote_average.toFixed(1)}/10</p>
+                                    {/* <p className='px-2 mt-1 rounded-md font-bold bg-yellow-300 h-[30px]'>☆{data.vote_average.toFixed(1)}/10</p> */}
                                 </div>
                                 <div>
                                     <p className='px-2 mt-1 mr-1 bg-black text-white rounded-md'>{data.media_type}</p>
@@ -80,8 +92,10 @@ const Card = ({Apidata}) => {
                         </div>
 
                     </div>
+                    
                 })
                 }
+                </Slider>
             </div>
         </>
     )

@@ -41,7 +41,7 @@ const RatedContent = ({ Apidata }) => {
 
                         <div className='card-text'>
                             <div className='card-heading'>
-                                {data.original_title ? (<h3>{data.original_title}</h3>) : (<h3>{data.name}</h3>)}
+                                {data.original_title ? (<h3>{data.title}</h3>) : (<h3>{data.name}</h3>)}
                             </div>
                             <hr />
                             <div className='card-row1'>

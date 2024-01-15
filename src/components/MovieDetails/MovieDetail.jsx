@@ -49,7 +49,7 @@ const MovieDetail = () => {
                         <p className='text-white text-[20px] font-sans px-2'>{movieDetails[0]?.overview}</p>
 
                         <div className='flex'>{movieDetails[0]?.genres.map((data, index) => {
-                            return <p className='py-2 px-1 text-[24px] text-yellow-300 font-bold italic' key={data.id}>
+                            return <p className='py-2 px-1 text-[18px] text-yellow-300 font-bold italic' key={data.id}>
                                 {data.name}
                                 {index < movieDetails[0]?.genres.length - 1 && ' ,'}
                             </p>
