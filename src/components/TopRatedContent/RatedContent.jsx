@@ -31,26 +31,24 @@ const RatedContent = ({ Apidata }) => {
 
     return (
         <>
-            <div className="container">
+            <div className="flex flex-wrap">
                 {Apidata && Apidata.length != 0 && Apidata[0]?.results.map((data) => {
 
-                    return <div key={data.id} className='Movie-card' onClick={() => handleClick(data.id,data.release_date                        )}>
-                        <div className='card-img'>
-                            <img src={`https://image.tmdb.org/t/p/w500/${data.backdrop_path}`} />
+                    return <div key={data.id} className='p-3 m-3 h-[410px] w-[275px] rounded-md shadow-md bg-black bg-opacity-50
+                    hover:scale-105 transition-transform duration-300 
+                    hover:border-4 hover:border-orange-500' onClick={() => handleClick(data.id,data.release_date                        )}>
+                        <div className='w-[250px] h-[300px]'>
+                            <img className="h-[290px] " src={`https://image.tmdb.org/t/p/w500/${data.backdrop_path}`} />
                         </div>
 
-                        <div className='card-text'>
-                            <div className='card-heading'>
+                        <div className=''>
+                            <div className='text-white text-[20px] font-bold'>
                                 {data.original_title ? (<h3>{data.title}</h3>) : (<h3>{data.name}</h3>)}
                             </div>
-                            <hr />
-                            <div className='card-row1'>
-                                <div className='card-row1-left'>
-                                    <p className='card-rating'>rating: {data.vote_average.toFixed(1)}/10</p>
-                                </div>
-                                <div className='card-row1-right'>
-                                    <p className='card-media'>{data.media_type}</p>
-                                </div>
+                            <hr/>
+                            <div>
+                               {data.release_date ? (<p className="text-white text-[14px] py-2 ">Released on :{data.release_date}</p>) 
+                               : (<p className="text-white text-[14px] py-2">Released on:{data.first_air_date}</p>)}
                             </div>
                         </div>
                     </div>

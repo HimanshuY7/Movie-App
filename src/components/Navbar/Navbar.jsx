@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { setSearchData } from '../../features/FetchLatestMovieListDetails/searchSlice'
 import { SearchApi, options } from "../../constants/Api";
@@ -7,9 +7,13 @@ import { SearchApi, options } from "../../constants/Api";
 
 const Navbar = () => {
 
-    const [searchResult, setResult] = useState("")
+    const [searchResult, setResult] = useState("");
 
-    const dispatch = useDispatch()
+    const location = useLocation();
+
+    const dispatch = useDispatch();
+
+    const isHomePage = location.pathname === '/';
 
     const handleSearch = (e) => {
         setResult(e.target.value);
@@ -37,24 +41,24 @@ const Navbar = () => {
                             <a className="text-2xl">WatchMovies</a>
                         </li>
 
-                        <li className='mt-2'>
+                        <li className='mt-2 hover:text-orange-400 hover:text-[17px]'>
                             <Link to='/'>Home</Link>
                         </li>
-                        <li className='mt-2'>
+                        <li className='mt-2 hover:text-orange-400 hover:text-[17px]'>
                             <Link to='/favourite'>Favourite</Link>
                         </li>
-                        <li className='mt-2'>
+                        <li className='mt-2 hover:text-orange-400 hover:text-[17px]'>
                             <Link to='/TopMovie'>Top-Rated Movies</Link>
                         </li>
-                        <li className='mt-2'>
+                        <li className='mt-2 hover:text-orange-400 hover:text-[17px]'>
                             <Link to='/TopSeries'>Top-Rated TV</Link>
                         </li>
                     </ul>
-                    <div className="flex items-center mr-[20px]">
+                   {isHomePage && <div className="flex items-center mr-[20px]">
                         <input className="shadow-md mx-1 px-2" value={searchResult} type="search" placeholder="Search" onChange={handleSearch} aria-label="Search" />
                         <button className=" px-2 shadow-md bg-white hover:bg-green-400 rounded-sm
                          hover:text-white" onClick={fetchSearchData}>Search</button>
-                    </div>
+                    </div>}
                 </div>
             </nav>
         </div>
