@@ -7,7 +7,7 @@ import { getMovieDetails } from '../../features/FetchLatestMovieListDetails/fetc
 import { useNavigate } from 'react-router-dom';
 import useMovieDetails from '../../utils/useMovieDetails';
 
-const Card = ({Apidata}) => {
+const Horror = ({Apidata}) => {
 
     const dispatch = useDispatch();
 
@@ -16,8 +16,6 @@ const Card = ({Apidata}) => {
     const navigate = useNavigate();
 
     const genreList = useSelector((state) => state.genre.genreData)
-
-    console.log(genreList);
 
     const { fetchDetails } = useMovieDetails();
 
@@ -40,12 +38,11 @@ const Card = ({Apidata}) => {
         slidesToScroll: 3
       };
 
-
     return (
         <>
             <div className='px-4 mx-3'>
             <Slider {...settings}>
-                {Apidata.length != 0 && Apidata[0].results.filter((item) => {
+                {Apidata.length != 0 && Apidata.results.filter((item) => {
                     return item.backdrop_path != null
                 }).map((data) => {
 
@@ -103,4 +100,4 @@ const Card = ({Apidata}) => {
     )
 }
 
-export default Card
+export default Horror
