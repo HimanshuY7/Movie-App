@@ -10,6 +10,15 @@
 
 .slick-slide{
     height: 440px;
-    background: black;
     border-radius: 5px
+}
+
+@media (max-width: 1040px) {
+    .slick-slide > div {
+        width: 200px; /* Adjust the width as per your preference */
+    }
+
+    .slick-slide {
+        height: 330px; /* Adjust the height as per your preference */
+    }
 }
