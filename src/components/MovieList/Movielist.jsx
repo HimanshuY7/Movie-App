@@ -41,16 +41,19 @@ const Movielist = () => {
      text-white font-bold shadow-md font-serif'>Latest Movies</h1>}
       <Card Apidata={movieData} />
     </div>
+
     <div className='lg:my-[50px] my-[20px]'>
       <h1 className='lg:my-3 p-2 lg:ml-[40px] lg:text-4xl text-[20px] ml-[20px] my-1
      text-white font-bold shadow-md font-serif'>Horror</h1>
       {horror.length!= 0 && <Horror Apidata={horror}/>}
     </div>
+
     <div className='lg:my-[50px] my-[20px]'>
       <h1 className='lg:my-3 p-2 lg:ml-[40px] lg:text-4xl text-[20px] ml-[20px] my-1
      text-white font-bold shadow-md font-serif'>Comedy</h1>
       <Comedy Apidata={movieData}/>
     </div>
+    
     <div className='lg:my-[50px] my-[20px]'>
       <h1 className='lg:my-3 p-2 lg:ml-[40px] lg:text-4xl text-[20px] ml-[20px] my-1
      text-white font-bold shadow-md font-serif'>Crime</h1>

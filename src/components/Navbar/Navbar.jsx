@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState,useEffect} from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { setSearchData } from '../../features/FetchLatestMovieListDetails/searchSlice'
@@ -83,7 +83,7 @@ const Navbar = () => {
                     </div>
 
                     <div className={`${isHomePage ? 'mr-0' : 'mr-[270px]'} lg:hidden lg:py-0 lg:space-y-0`}>
-                        <ul className={`${isMenuOpen ? 'block' : 'hidden'}  text-white bg-gray-800 opacity-95 absolute lg:py-0 lg:space-y-0 py-2 space-y-2`}>
+                        <ul className={`${isMenuOpen ? 'block' : 'hidden'}  text-white bg-gray-800 opacity-95 z-20 absolute lg:py-0 lg:space-y-0 py-2 space-y-2`}>
                             <li className='mt-2 px-1 hover:text-orange-400 hover:text-[17px]'>
                                 <Link to='/'>Home</Link>
                             </li>

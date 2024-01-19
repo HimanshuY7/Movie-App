@@ -102,7 +102,7 @@ const Comedy = ({Apidata}) => {
                     onClick={() => handleClick(data.id)}>
 
                         <div className='ml-1 w-[280px]'>
-                            <img className='lg:w-[240px] lg:h-[200px] w-[160px] h-[150px] shadow-md' src={`https://image.tmdb.org/t/p/w500/${data.backdrop_path}`} />
+                            <img className='lg:w-[240px] lg:h-[200px] lg:mt-0 mt-[10px] w-[185px] h-[150px] shadow-md' src={`https://image.tmdb.org/t/p/w500/${data.backdrop_path}`} />
                         </div>
 
                         <div >

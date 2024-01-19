@@ -31,18 +31,18 @@ const RatedContent = ({ Apidata }) => {
 
     return (
         <>
-            <div className="flex flex-wrap">
+            <div className="flex flex-wrap ml-[20px]">
                 {Apidata && Apidata.length != 0 && Apidata[0]?.results.map((data) => {
 
-                    return <div key={data.id} className='p-3 m-3 h-[410px] w-[275px] rounded-md shadow-md bg-black bg-opacity-50
+                    return <div key={data.id} className='p-3 m-3 lg:h-[410px] lg:w-[275px] h-[300px] w-[200px]  rounded-md shadow-md bg-black bg-opacity-50
                     hover:scale-105 transition-transform duration-300 
                     hover:border-4 hover:border-orange-500' onClick={() => handleClick(data.id,data.release_date                        )}>
-                        <div className='w-[250px] h-[300px]'>
-                            <img className="h-[290px] " src={`https://image.tmdb.org/t/p/w500/${data.backdrop_path}`} />
+                        <div className='lg:w-[250px] lg:h-[300px] h-[200px] w-[170px]'>
+                            <img className="lg:h-[290px] h-[190px] " src={`https://image.tmdb.org/t/p/w500/${data.backdrop_path}`} />
                         </div>
 
                         <div className=''>
-                            <div className='text-white text-[20px] font-bold'>
+                            <div className='text-white lg:text-[20px] text-[16px] font-bold'>
                                 {data.original_title ? (<h3>{data.title}</h3>) : (<h3>{data.name}</h3>)}
                             </div>
                             <hr/>

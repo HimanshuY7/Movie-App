@@ -1,4 +1,4 @@
-import { Suspense, lazy, useState } from 'react'
+import { Suspense, createContext, lazy, useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Home from './routes/Home/Home'
 import Movieveiw from './routes/Movie-Detailed-view/Movieveiw'

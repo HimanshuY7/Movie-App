@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { getMovieDetails } from '../../features/FetchLatestMovieListDetails/fetchSlice';
 import { useNavigate } from 'react-router-dom';
+import useMovieDetails from '../../utils/useMovieDetails';
 
 const Horror = ({Apidata}) => {
 
@@ -15,6 +16,8 @@ const Horror = ({Apidata}) => {
     console.log(Apidata)
 
     const navigate = useNavigate();
+
+    const { fetchDetails } = useMovieDetails();
 
     let setting = {};
 
@@ -91,7 +94,7 @@ const Horror = ({Apidata}) => {
                     onClick={() => handleClick(data.id)}>
 
                         <div className='ml-1 w-[280px]'>
-                            <img className='lg:w-[240px] lg:h-[200px] w-[160px] h-[150px] shadow-md' src={`https://image.tmdb.org/t/p/w500/${data.backdrop_path}`} />
+                            <img className='lg:w-[240px] lg:h-[200px] lg:mt-0 mt-[10px] w-[185px] h-[150px] shadow-md' src={`https://image.tmdb.org/t/p/w500/${data.backdrop_path}`} />
                         </div>
 
                         <div >
