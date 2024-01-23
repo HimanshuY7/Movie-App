@@ -99,7 +99,7 @@ const Card = ({ Apidata }) => {
                             </div>
 
                             <div >
-                                <div className='text-white lg:h-[70px] lg:text-[18px] h-[20px] text-[14px] py-1 px-2  font-bold'>
+                                <div className='text-white lg:h-[70px] lg:text-[18px] h-[40px] text-[14px] py-1 px-2  font-bold'>
                                     <h3>{data.title}</h3>
                                 </div>
                                 <hr className='lg:mt-0 mt-2' />
