@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import useMovieDetails from "../../utils/useMovieDetails";
 import useShowDetails from "../../utils/useShowDetails";
 
-const RatedContent = ({ Apidata }) => {
+const RatedContent = ({ Apidata ,start, end}) => {
 
     const navigate = useNavigate();
 
@@ -29,10 +29,12 @@ const RatedContent = ({ Apidata }) => {
       navigate(`/Details/:${id}`);
     }
 
+    const MovieData = Apidata[0]?.results.slice(start,end)
+
     return (
         <>
             <div className="flex flex-wrap ml-[20px]">
-                {Apidata && Apidata.length != 0 && Apidata[0]?.results.map((data) => {
+                {MovieData && MovieData.length != 0 && MovieData.map((data) => {
 
                     return <div key={data.id} className='p-3 m-3 lg:h-[410px] lg:w-[275px] h-[300px] w-[200px]  rounded-md shadow-md bg-black bg-opacity-50
                     hover:scale-105 transition-transform duration-300 

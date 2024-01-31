@@ -1,15 +1,19 @@
 
 import Navbar from "../../components/Navbar/Navbar";
 import RatedContent from "../../components/TopRatedContent/RatedContent";
+import Paginate from "../../components/TopRatedContent/paginate";
 import { TopMovieApi, options } from "../../constants/Api"
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 
+export const pageContext = createContext();
 
 const TopRatedMovies = () => {
 
 
-    const [topMovieData,setTopMovieData] = useState([]);
+    const [topMovieData, setTopMovieData] = useState([]);
+
+    const [page, setPage] = useState(1)
 
     console.log(topMovieData);
 
@@ -21,18 +25,23 @@ const TopRatedMovies = () => {
         const data = await resp;
 
         setTopMovieData([data]);
-        
+
     }
 
-    useEffect(()=>{
+    const LastIndex = page * 10
+    const StartIndex = LastIndex - 10
+
+    useEffect(() => {
         fetchTopMovie();
-    },[])
+    }, [])
 
     return (
         <div>
-            <Navbar/>
-            <RatedContent Apidata={topMovieData}/>
-
+            <pageContext.Provider value={{ setPage }}>
+                <Navbar />
+                <RatedContent Apidata={topMovieData} start={StartIndex} end={LastIndex} />
+                <Paginate Apidata={topMovieData} type={"movie"}/>
+            </pageContext.Provider>
         </div>
     )
 

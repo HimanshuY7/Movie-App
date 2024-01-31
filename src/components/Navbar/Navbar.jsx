@@ -3,7 +3,6 @@ import { Link, useLocation } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { setSearchData } from '../../features/FetchLatestMovieListDetails/searchSlice'
 import { SearchApi, options } from "../../constants/Api";
-import './Navbar.css'
 
 
 const Navbar = () => {

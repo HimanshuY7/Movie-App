@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import '../MovieList/Movielist.css'
 import Card from "../MovieList/Card";
 
 
